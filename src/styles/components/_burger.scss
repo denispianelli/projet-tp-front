@@ -1,0 +1,46 @@
+@use '../utils/variables' as v;
+
+.burger-menu {
+  background: transparent;
+  border: none;
+  width: 2.5rem;
+	height: 100%;
+  display: flex;
+	align-items: center;
+	justify-content: center;
+  flex-direction: column;
+	margin: 0 14px;
+  cursor: pointer;
+
+  &--toggled span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  &--toggled span:nth-of-type(2) {
+    opacity: 0;
+  }
+
+  &--toggled span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+	&:hover .burger-bar{
+		background-color: v.$hover-bg-color;
+	}
+}
+
+.burger-bar {
+  display: block;
+  width: 22px;
+  height: 3px;
+  border: none;
+  background-color: #fff;
+  margin: 0 0 4px;
+  transition: all 0.2s;
+}
+
+
+
+// .burger-menu {
+// 	display: none;
+// }
