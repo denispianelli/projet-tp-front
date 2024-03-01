@@ -9,6 +9,10 @@ export default function Dropdown() {
     setIsOpen((open) => !open);
   };
 
+  const isClickedClassName = isOpen
+    ? 'dropdown-container dropdown-container--clicked'
+    : 'dropdown-container';
+
   const isOpenClassName = isOpen
     ? 'dropdown-content dropdown-content--toggled'
     : 'dropdown-content';
@@ -17,7 +21,7 @@ export default function Dropdown() {
     <ul className="dropdown">
       <button
         type="button"
-        className="dropdown-container"
+        className={isClickedClassName}
         onClick={toggleDropdown}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {

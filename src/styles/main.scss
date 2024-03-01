@@ -4,9 +4,11 @@
 
 @use './components/burger';
 @use './components/dropdown';
-@use './components/button';
+@use './components/buttons';
 
 @use './layouts/header';
+@use './layouts/footer';
+@use './layouts/about';
 
 @use './pages/home';
 

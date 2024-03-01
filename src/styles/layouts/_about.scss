@@ -1,0 +1,65 @@
+@use '../utils/variables' as v;
+
+.about { 
+	height: 100vh;
+	width: 100vw;
+	background-color: #101615;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+
+	&__title-container {
+		display: flex;
+		align-items: center;
+		margin-bottom: 3rem;
+	}
+
+	&__key {
+		flex: 1;
+		width: 48px;
+		height: 48px;
+		margin: 0 2rem;
+	}
+
+	&__title {
+		flex: 5;
+		width: 25%;
+		font-family: v.$heading-font-family;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: calc(2rem + 0.2vw);
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #fff;
+		padding: 1rem	0;
+		text-align: center;
+	}
+
+	&__text {
+		width: 75%;
+		color: #fff;
+		font-family: v.$font-family-base;
+		font-size: calc(1rem + 1vw);
+		text-align: center;
+		line-height: calc(16px + 1vw);
+		margin-top: -10rem;
+	}
+}
+
+.line {
+	display: block;
+	height: 1px;
+	width: 35vw;
+	background-color: #fff;
+}
+
+.line-container {
+	display: flex;
+	align-items: center;
+	gap: 2rem;
+	margin: 3rem 0;
+}
+
+@media screen and (min-width: v.$breakpoint-large) {
+
+}

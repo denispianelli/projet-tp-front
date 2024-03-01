@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegCircleUser } from 'react-icons/fa6';
+import Burger from '../components/ui/Burger';
 import Navbar from '../components/ui/Navbar';
 
-export default function Header() {
+export default function HeaderMobile() {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,9 +29,7 @@ export default function Header() {
 
   return (
     <header className={headerClassName}>
-      <h1 className="header__title">
-        <Link to="/">o&apos;survivors</Link>
-      </h1>
+      <Burger />
 
       <Navbar />
 
@@ -38,11 +37,6 @@ export default function Header() {
         <Link className="link" to="/connexion">
           <FaRegCircleUser className="account-icon" />
         </Link>
-        <button className="header__button" type="button">
-          <Link className="link" to="/connexion">
-            Connexion
-          </Link>
-        </button>
       </div>
     </header>
   );

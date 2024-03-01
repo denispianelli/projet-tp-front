@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  background-color: v.$header-bg-color;
+  background-color: transparent;
   max-width: none;
   height: 54px;
   display: flex;
@@ -13,11 +13,17 @@
   color: v.$primary-text-color;
   font-family: v.$heading-font-family;
   text-transform: uppercase;
+	transition: all 0.5s ease-in-out;
+	z-index: 99;
 
   &__title {
     height: 100%;
     display: flex;
     align-items: center;
+
+		&:hover {
+			color: #fff;
+		}
   }
 
   &__title a {
@@ -25,31 +31,38 @@
     display: flex;
     align-items: center;
   }
+
+	&--scrolled {
+		transition: all 0.5s ease-in-out;
+		background-color: #101615;
+	}
 }
 
 .navbar {
   position: fixed;
   font-size: 0.7rem;
-  top: 54px;
+  top: 0px;
   width: 100vw;
   height: 100%;
   max-height: 0px;
   overflow: hidden;
   overflow-x: hidden;
-  background-color: v.$header-bg-color;
-  transition: max-height 1.2s;
+  background-color: #101615;
+  transition: all 1.2s;
+	padding-top: 0px;
+
 
   &__list {
     flex-direction: column;
     align-items: center;
 
     &:nth-child(1) {
-      border-top: 1px solid v.$header-border-color;
+      border-top: 1px solid #fff;
     }
   }
 
   &__item {
-    border-bottom: 1px solid v.$header-border-color;
+    border-bottom: 1px solid #fff;
   }
 
   &__link {
@@ -57,11 +70,13 @@
     padding: 19px 0 19px v.$spacing-medium;
 
     &:hover {
-      background-color: v.$hover-bg-color;
+			color: #fff;
+
     }
   }
 
   &--visible {
+		padding-top: 54px;
     max-height: 100vh;
   }
 }
@@ -72,16 +87,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+	margin-right: 42px;
   cursor: pointer;
+
+	&:hover .link {
+		color: #fff;
+	}
 }
 
 .account-icon {
   width: 26px;
   height: 26px;
-  margin: 0 v.$spacing-medium;
+  margin: 0 v.$spacing-small;
 }
 
 .link {
+	color: v.$primary-text-color;
+	font-size: 0.8vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,16 +111,21 @@
   width: 100%;
 }
 
-.button {
-  display: none;
-}
 
 @media screen and (min-width: v.$breakpoint-large) {
   .header {
     display: flex;
+		background-color: transparent;
+		transition: all 0.5s ease-in-out;
 
 		&__title {
 			padding-left: v.$spacing-medium;
+			font-size: 1.3vw;
+		}
+
+		&--scrolled {
+			transition: all 0.5s ease-in-out;
+			background-color: #101615;
 		}
   }
 
@@ -107,6 +134,7 @@
   }
 
   .navbar {
+		background-color: transparent;
     position: absolute;
     top: 0;
 		left: 50%;
@@ -115,6 +143,7 @@
     max-height: 54px;
     overflow: visible;
     border: none;
+		font-size: 0.8vw;
 
     &__list {
       display: flex;
@@ -129,7 +158,6 @@
 
     &__item {
       border: none;
-      width: 140px;
       height: 54px;
       display: flex;
       align-items: center;
@@ -140,7 +168,6 @@
     &__link {
       padding: 0 v.$spacing-medium;
       height: 100%;
-      width: 130px;
       display: flex;
       justify-content: center;
       align-items: center;
