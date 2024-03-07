@@ -1,3 +1,5 @@
+@use '../utils/variables' as v;
+
 html {
   box-sizing: border-box;
 }
@@ -8,3 +10,12 @@ html {
   box-sizing: inherit;
 }
 
+input::placeholder {
+	color: #6F8186;
+}
+
+.close-icon {
+	color: #fff;
+	width: 25px;
+	height: 25px;
+}

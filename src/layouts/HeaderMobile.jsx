@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import Burger from '../components/ui/Burger';
 import Navbar from '../components/ui/Navbar';
+import { toggleModal } from '../slices/modalSlice';
 
 export default function HeaderMobile() {
+  const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -33,10 +35,19 @@ export default function HeaderMobile() {
 
       <Navbar />
 
-      <div className="account-container">
-        <Link className="link" to="/connexion">
-          <FaRegCircleUser className="account-icon" />
-        </Link>
+      <div
+        className="account-container"
+        role="button"
+        tabIndex={0}
+        aria-label="Account"
+        onClick={() => dispatch(toggleModal())}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            dispatch(toggleModal());
+          }
+        }}
+      >
+        <FaRegCircleUser className="account-icon" />
       </div>
     </header>
   );
