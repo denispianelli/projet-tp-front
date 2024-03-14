@@ -8,6 +8,12 @@ export default function Navbar() {
 
   const isOpenNavClassName = isOpen ? 'navbar navbar--visible' : 'navbar';
 
+  const menuItems = [
+    { label: 'Guide', path: '/guide' },
+    { label: 'Personnages', path: '/personnages' },
+    // Ajouter d'autres items ici
+  ];
+
   return (
     <nav className={isOpenNavClassName}>
       <ul className="navbar__list">
@@ -17,7 +23,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar__item">
-          <Dropdown />
+          <Dropdown title="Découvrir" items={menuItems} />
         </li>
         <li className="navbar__item">
           <Link className="navbar__link" to="/lore">

@@ -1,68 +1,57 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+import PropTypes from 'prop-types';
 
-export default function Dropdown() {
+function Dropdown({ title, items }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen((open) => !open);
-  };
-
+  const toggleDropdown = () => setIsOpen(!isOpen);
   const isClickedClassName = isOpen
     ? 'dropdown-container dropdown-container--clicked'
     : 'dropdown-container';
-
   const isOpenClassName = isOpen
     ? 'dropdown-content dropdown-content--toggled'
     : 'dropdown-content';
 
   return (
-    <ul className="dropdown">
+    <div className="dropdown">
       <button
         type="button"
         className={isClickedClassName}
         onClick={toggleDropdown}
         onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            toggleDropdown();
-          }
+          if (e.key === 'Enter') toggleDropdown();
         }}
         aria-label="Toggle Dropdown"
       >
-        <p>Decouvrir</p>
-        <span className="angle-down">
-          {isOpen ? <FaAngleUp /> : <FaAngleDown />}
-        </span>
+        {title}
+        {isOpen ? <FaAngleUp /> : <FaAngleDown />}
       </button>
 
-      <div className={isOpenClassName}>
-        <li className="dropdown-item">
-          <Link className="dropdown-link" to="/guide">
-            Guide
-          </Link>
-        </li>
-        <li className="dropdown-item">
-          <Link className="dropdown-link" to="/personnages">
-            Personnages
-          </Link>
-        </li>
-        <li className="dropdown-item">
-          <Link className="dropdown-link" to="/bestaire">
-            Bestiaire
-          </Link>
-        </li>
-        <li className="dropdown-item">
-          <Link className="dropdown-link" to="/armes">
-            Armes
-          </Link>
-        </li>
-        <li className="dropdown-item">
-          <Link className="dropdown-link" to="/items">
-            Guide
-          </Link>
-        </li>
-      </div>
-    </ul>
+      {isOpen && (
+        <ul className={isOpenClassName}>
+          {items.map((item) => (
+            <li key={item.path} className="dropdown-item">
+              <Link className="dropdown-link" to={item.path}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
+
+Dropdown.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      path: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+};
+
+export default Dropdown;

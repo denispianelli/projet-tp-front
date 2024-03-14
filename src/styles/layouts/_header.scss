@@ -10,20 +10,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: v.$primary-text-color;
   font-family: v.$heading-font-family;
   text-transform: uppercase;
-	transition: all 0.5s ease-in-out;
-	z-index: 99;
+  transition: all 0.5s ease-in-out;
+  z-index: 99;
 
   &__title {
     height: 100%;
     display: flex;
     align-items: center;
+		color: var(--text-color-link);
 
-		&:hover {
-			color: #fff;
-		}
+    &:hover {
+      color: var(--text-color);
+    }
   }
 
   &__title a {
@@ -32,10 +32,10 @@
     align-items: center;
   }
 
-	&--scrolled {
-		transition: all 0.5s ease-in-out;
-		background-color: #101615;
-	}
+  &--scrolled {
+    transition: all 0.5s ease-in-out;
+    background-color: var(--background-color);
+  }
 }
 
 .navbar {
@@ -47,36 +47,35 @@
   max-height: 0px;
   overflow: hidden;
   overflow-x: hidden;
-  background-color: #101615;
+  background-color: var(--background-color);
   transition: all 1.2s;
-	padding-top: 0px;
-
+  padding-top: 0px;
 
   &__list {
     flex-direction: column;
     align-items: center;
 
     &:nth-child(1) {
-      border-top: 1px solid #fff;
+      border-top: 1px solid var(--text-color);
     }
   }
 
   &__item {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid var(--text-color);
   }
 
   &__link {
     display: block;
     padding: 19px 0 19px v.$spacing-medium;
+		color: var(--text-color-link);
 
     &:hover {
-			color: #fff;
-
+      color: var(--text-color);
     }
   }
 
   &--visible {
-		padding-top: 54px;
+    padding-top: 54px;
     max-height: 100vh;
   }
 }
@@ -87,11 +86,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-	margin-right: 42px;
+  margin-right: 14px;
+  font-size: 0.8rem;
+	cursor: pointer;
+
+  &:hover .link {
+    color: var(--text-color);
+  }
+
+	&:hover .account-icon {
+		color: var(--text-color);
+	}
+}
+
+.account-dropdown-container {
   cursor: pointer;
 
-	&:hover .link {
-		color: #fff;
+	&:hover {
+		color: var(--text-color);
+	
 	}
 }
 
@@ -102,8 +115,8 @@
 }
 
 .link {
-	color: v.$primary-text-color;
-	font-size: 0.8vw;
+  color: var(--text-color-link);
+  font-size: 0.8vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,22 +124,24 @@
   width: 100%;
 }
 
-
 @media screen and (min-width: v.$breakpoint-large) {
   .header {
     display: flex;
-		background-color: transparent;
-		transition: all 0.5s ease-in-out;
+    background-color: transparent;
+    transition: all 0.5s ease-in-out;
 
-		&__title {
-			padding-left: v.$spacing-medium;
-			font-size: 1.3vw;
-		}
+    &:hover {
+      background-color: var(--background-color);
+    }
 
-		&--scrolled {
-			transition: all 0.5s ease-in-out;
-			background-color: #101615;
-		}
+    &__title {
+      padding-left: 80px;
+      font-size: 1.3vw;
+    }
+
+    &--scrolled {
+      transition: all 0.5s ease-in-out;
+    }
   }
 
   .burger-menu {
@@ -134,16 +149,16 @@
   }
 
   .navbar {
-		background-color: transparent;
+    background-color: transparent;
     position: absolute;
     top: 0;
-		left: 50%;
-		transform: translateX(-50%);
+    left: 50%;
+    transform: translateX(-50%);
     width: fit-content;
     max-height: 54px;
     overflow: visible;
     border: none;
-		font-size: 0.8vw;
+    font-size: 0.75rem;
 
     &__list {
       display: flex;
@@ -172,6 +187,18 @@
       justify-content: center;
       align-items: center;
       border: none;
+			color: var(--text-color-link);
     }
   }
+
+  .account-container {
+    margin-right: 90px;
+    font-size: 0.75rem;
+  }
+	.account-icon {
+		width: 35px;
+		height: 35px;
+		padding: 0.3rem 0;
+	}
+
 }

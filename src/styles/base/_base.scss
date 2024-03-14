@@ -10,12 +10,32 @@ html {
   box-sizing: inherit;
 }
 
+:root {
+  color-scheme: light dark;
+  --text-color: #ffffff;
+	--text-color-link : #ffffffcc;
+	--background-color: #0b1416;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+		--text-color: #000000;
+		--text-color-link : #424242;
+		--background-color: #F9FAFB;
+  }
+}
+
 input::placeholder {
-	color: #6F8186;
+  color: #6f8186;
 }
 
 .close-icon {
-	color: #fff;
-	width: 25px;
-	height: 25px;
+  color: #fff;
+  width: 25px;
+  height: 25px;
 }

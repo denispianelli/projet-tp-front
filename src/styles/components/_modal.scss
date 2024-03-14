@@ -75,7 +75,9 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	border-radius: v.$border-radius;
   width: 90%; /* ou une largeur fixe, selon votre besoin */
-	height: fit-content;
+	min-height: 600px;
+	height: auto;
+	padding-bottom: 0;
   max-width: 500px; /* Assure que la modal ne soit pas trop large sur grands écrans */
   z-index: 1001; /* Assure que le contenu de la modal est au-dessus de l'overlay */
   animation: fadeIn 0.3s ease;

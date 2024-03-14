@@ -12,6 +12,7 @@
 	margin: 0 14px;
   cursor: pointer;
 	z-index: 9;
+	color: var(--text-color-link);
 
   &--toggled span:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
@@ -27,7 +28,7 @@
 
 	&:hover .burger-bar{
 		// background-color: v.$hover-bg-color;
-		color: #fff;
+		color: var(--text-color);
 	}
 }
 
@@ -36,13 +37,7 @@
   width: 22px;
   height: 3px;
   border: none;
-  background-color: #fff;
+  background-color: var(--text-color-link);
   margin: 0 0 4px;
   transition: all 0.2s;
 }
-
-
-
-// .burger-menu {
-// 	display: none;
-// }

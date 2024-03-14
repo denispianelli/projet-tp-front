@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleMenu } from '../../slices/menuSlice';
+import { toggleMenu } from '../../store/slices/menuSlice';
 
 export default function Burger() {
   const dispatch = useDispatch();

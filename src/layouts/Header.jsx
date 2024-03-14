@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaRegCircleUser } from 'react-icons/fa6';
-import { toggleModal } from '../slices/modalSlice';
+import { FaUserAstronaut } from 'react-icons/fa';
+import { openModal } from '../store/slices/modalSlice';
 import Navbar from '../components/ui/Navbar';
+import AccountDropdown from '../components/ui/AccountDropdown';
 
 export default function Header() {
   const dispatch = useDispatch();
+
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const user = useSelector((state) => state.auth.user);
 
   useEffect(() => {
     function handleScroll() {
@@ -37,22 +43,30 @@ export default function Header() {
 
       <Navbar />
 
-      <div
-        className="account-container"
-        role="button"
-        tabIndex={0}
-        onClick={() => dispatch(toggleModal())}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            dispatch(toggleModal());
-          }
-        }}
-      >
-        <FaRegCircleUser className="account-icon" />
-        <button className="header__button" type="button">
-          Connexion
-        </button>
-      </div>
+      {isAuth ? (
+        <div className="account-container">
+          <AccountDropdown
+            title={<FaUserAstronaut className="account-icon" />}
+          />
+        </div>
+      ) : (
+        <div
+          className="account-container"
+          role="button"
+          tabIndex={0}
+          onClick={() => dispatch(openModal('signin'))}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              dispatch(openModal('signin'));
+            }
+          }}
+        >
+          <FaRegCircleUser className="account-icon" />
+          <button className="header__button" type="button">
+            Connexion
+          </button>
+        </div>
+      )}
     </header>
   );
 }

@@ -5,7 +5,7 @@
 	&__title {
 		font-family: v.$heading-font-family;
 		font-size: 1.1rem;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 		color: #fff;
 		text-transform: uppercase;
 		text-align: left;
@@ -15,12 +15,23 @@
 		font-size: 0.8rem;
 		margin-bottom: 1rem;
 		margin-top: 1rem;
+
+		&--success {
+			display: flex;
+			width: 100%;
+			font-size: 1rem;
+			// text-align: center;
+		}
 	}
 
 	&__link {
 		color: #629fff;
 		text-decoration: none;
 		cursor: pointer;
+		background: none;
+		outline: none;
+		border: none;
+		font-family: inherit;
 	}
 
 }
@@ -37,19 +48,24 @@
   font-size: v.$base-font-size;
 	outline: none;
 	border: 2px solid transparent;
+	// margin: 10px 0;
 
 	&::placeholder {
-		font-size: 0.9rem;
+		font-size: 1rem;
 	}
 
-  &--error:not(:focus) {
-    border: 2px solid #ff6e80;
-  }
+	&[aria-invalid="true"] {
+		border: 2px solid #ff6e80;
+	}
+
+  // &--error:not(:focus) {
+  //   border: 2px solid #ff6e80;
+  // }
 
 }
 
 .form__error {
-  visibility: hidden;
+  // visibility: hidden;
   font-size: 0.75rem;
   padding: 0.2rem 1rem;
   color: #ff6e80;
@@ -67,8 +83,8 @@
 
 .required-asterisk {
 	position: absolute;
-	top: 20px;
-	left: 70px;
+	top: 16px;
+	left: 74px;
 	visibility: hidden;
 	font-size: 0.7rem;
 	color: #ff6e80;
@@ -76,8 +92,35 @@
 	&--show {
 		visibility: visible;
 	}
+
+	&--email {
+		visibility: visible;
+		left: 61px;
+	}
+	
+	&--sigin-password {
+		visibility: visible;
+		left: 115px;
+	}
+
+	&--password {
+		visibility: visible;
+		left: 115px;
+	}
 }
 
-.input-container:nth-of-type(2) .required-asterisk {
-	left:110px;
+// .input-container:nth-of-type(2) .required-asterisk {
+// 	left:115px;
+// }
+
+.loading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1rem;
+	visibility: hidden;
+
+	&--show {
+		visibility: visible;
+	}	
 }

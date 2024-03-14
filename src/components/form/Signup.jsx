@@ -1,17 +1,32 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from '../../store/middleware/authMiddleware';
-import { closeModal, openModal } from '../../store/slices/modalSlice';
+import { useForm } from 'react-hook-form';
+import { openModal, closeModal } from '../../store/slices/modalSlice';
+import { signupUser } from '../../store/middleware/authMiddleware';
+import { resetError } from '../../store/slices/authSlice';
 import Username from './inputs/Username';
+import Email from './inputs/Email';
 import Password from './inputs/Password';
 
-export default function Signin() {
+export default function Signup() {
   const dispatch = useDispatch();
 
   const { loading, error } = useSelector((state) => state.auth);
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
+
+  let errorMsg;
+
+  switch (error?.constraint) {
+    case 'user_username_key':
+      errorMsg = 'Ce pseudo est déjà pris';
+      break;
+    case 'user_email_key':
+      errorMsg = 'Cet email est déjà utilisé';
+      break;
+    default:
+      break;
+  }
 
   const {
     register,
@@ -20,8 +35,8 @@ export default function Signin() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (formData) => {
-    dispatch(loginUser(formData));
+  const onSubmit = (data) => {
+    dispatch(signupUser(data));
   };
 
   const [loadingClassName, setLoadingClassName] = useState('loading');
@@ -41,50 +56,43 @@ export default function Signin() {
     }, 500);
   }, [isAuth, loading]);
 
+  const email = watch('email', '');
   const username = watch('username', '');
   const password = watch('password', '');
 
   return (
     <div className="form-container">
-      <h2 className="form__title">Se connecter</h2>
-      {error && <div className="errorMsg-container">{error}</div>}
+      <h2 className="form__title">S&apos;inscrire</h2>
+      {errorMsg && <div className="errorMsg-container">{errorMsg}</div>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <Username register={register} watch={watch} errors={errors} />
+        <Email register={register} watch={watch} errors={errors} />
         <Password register={register} watch={watch} errors={errors} />
 
         <p className="form__text">
-          Tu as oublié ton
-          <span className="form__link"> mot de passe</span>
+          Déjà inscrit ?
           {' '}
-          ?
-        </p>
-
-        <p className="form__text">
-          Première fois sur O&apos;Survivors ?
           <button
             type="button"
             className="form__link"
-            onClick={() => dispatch(openModal('signup'))}
+            onClick={() => {
+              dispatch(resetError());
+              dispatch(openModal('signin'));
+            }}
           >
-            {' '}
-            Inscris-toi
+            Se connecter
           </button>
         </p>
 
-        {password && username ? (
-          <button className="form__button form__button--signin" type="submit">
-            Se connecter
+        {email && username && password ? (
+          <button className="form__button" type="submit">
+            S&apos;inscrire
           </button>
         ) : (
-          <button
-            disabled
-            className="form__button form__button--signin"
-            type="submit"
-          >
-            Se connecter
+          <button disabled className="form__button" type="submit">
+            S&apos;inscrire
           </button>
         )}
-
       </form>
       <p className={loadingClassName}>Chargement en cours...</p>
     </div>
