@@ -14,5 +14,7 @@
 @use './layouts/about';
 
 @use './pages/home';
+@use './pages/notFound';
+@use './pages/profil';
 
 @use './utils/variables' as v;

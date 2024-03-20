@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { closeMenu } from '../../store/slices/menuSlice';
+import { logoutUser } from '../../utils/authUtils';
 
 function AccountDropdown({ title }) {
   const dispatch = useDispatch();
@@ -40,11 +41,15 @@ function AccountDropdown({ title }) {
       </div>
       <ul className={isOpenClassName}>
         <li className="account-dropdown-item">
-          <Link className="account-dropdown-link" to={`/user/${user.username}`}>
+          <Link onClick={() => toggleDropdown()} className="account-dropdown-link" to={`/user/${user.username}`}>
             Voir le profil
           </Link>
         </li>
-        <li className="account-dropdown-item">Logout</li>
+        <li className="account-dropdown-item">
+          <button className="dropdown__button" type="button" onClick={() => logoutUser(dispatch)}>
+            Logout
+          </button>
+        </li>
       </ul>
     </>
   );

@@ -1,0 +1,86 @@
+@use '../utils/variables' as v;
+.main-profil {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.section-profil {
+  width: 100%;
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.profil {
+  &__heading {
+    font-family: v.$heading-font-family;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+
+  &__subheading {
+    width: 100%;
+    font-family: v.$font-family-base;
+    color: #818384;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 10px;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #343536;
+    letter-spacing: 0.1rem;
+  }
+
+  &__title {
+    font-family: v.$font-family-base;
+    color: var(--text-color);
+  }
+
+  &__text {
+    font-family: v.$font-family-base;
+    color: #818384;
+    margin-top: 1rem;
+    font-size: 12px;
+  }
+
+  &__button {
+    background: none;
+    background-color: #ffae00;
+    border: 2px solid #000000;
+		font-size: 0.7rem;
+    font-family: v.$heading-font-family;
+    padding: 15px 20px;
+    align-self: center;
+    border-radius: 10px;
+    color: #fff;
+		cursor: pointer;
+    box-shadow: 0px 5px 0px #800000;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s;
+
+    &:hover {
+      transform: translateY(2px);
+      box-shadow: 0px 3px 0px #800000;
+    }
+  }
+}
+
+.profil-settings {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+@media screen and (min-width: v.$breakpoint-large) {
+	.section-profil {
+		width: 80%;
+	}
+}

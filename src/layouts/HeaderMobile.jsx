@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import { FaUserAstronaut } from 'react-icons/fa';
+import { MdOutlineLightMode } from 'react-icons/md';
 import Burger from '../components/ui/Burger';
 import Navbar from '../components/ui/Navbar';
 import { openModal } from '../store/slices/modalSlice';
 import AccountDropdown from '../components/ui/AccountDropdown';
+import { toggleTheme } from '../store/slices/themeSlice';
 
 export default function HeaderMobile() {
   const dispatch = useDispatch();
@@ -33,35 +35,45 @@ export default function HeaderMobile() {
 
   const headerClassName = isScrolled ? 'header header--scrolled' : 'header';
 
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme());
+  };
+
   return (
     <header className={headerClassName}>
       <Burger />
 
       <Navbar />
 
-      {isAuth ? (
-        <div>
-          <AccountDropdown
-            className="account-dropdown"
-            title={<FaUserAstronaut className="account-icon" />}
-          />
-        </div>
-      ) : (
-        <div
-          className="account-container"
-          role="button"
-          tabIndex={0}
-          onClick={() => dispatch(openModal('signin'))}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              dispatch(openModal('signin'));
-            }
-          }}
-          aria-label="Open Sign In Modal"
-        >
-          <FaRegCircleUser className="account-icon" />
-        </div>
-      )}
+      <div className="header__right-container">
+        <MdOutlineLightMode
+          className="theme-icon"
+          onClick={handleThemeToggle}
+        />
+        {isAuth ? (
+          <div className="account-container">
+            <AccountDropdown
+              className="account-dropdown"
+              title={<FaUserAstronaut className="account-icon" />}
+            />
+          </div>
+        ) : (
+          <div
+            className="account-container"
+            role="button"
+            tabIndex={0}
+            onClick={() => dispatch(openModal('signin'))}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                dispatch(openModal('signin'));
+              }
+            }}
+            aria-label="Open Sign In Modal"
+          >
+            <FaRegCircleUser className="account-icon" />
+          </div>
+        )}
+      </div>
     </header>
   );
 }

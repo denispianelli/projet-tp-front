@@ -1,11 +1,11 @@
 import {
-  loginRequest, loginSuccess, loginFailure, signupRequest, signupSuccess, signupFailure,
+  request, loginSuccess, loginFailure, success, failure,
 } from '../slices/authSlice';
 import { openModal } from '../slices/modalSlice';
 
 const loginUser = (credentials) => async (dispatch) => {
   try {
-    dispatch(loginRequest());
+    dispatch(request());
     // Effectuer une requête d'authentification à l'API
     const response = await fetch('http://localhost:3001/v1/api/user/signin', {
       method: 'POST',
@@ -20,10 +20,12 @@ const loginUser = (credentials) => async (dispatch) => {
     if (userData.error) {
       dispatch(loginFailure(userData.error));
       localStorage.removeItem('token');
+      localStorage.removeItem('logged');
     } else {
       dispatch(loginSuccess(userData));
 
       localStorage.setItem('token', userData.token);
+      localStorage.setItem('logged', 'true');
     }
     // Dispatch de l'action de login réussi avec les données utilisateur
   } catch (error) {
@@ -34,7 +36,7 @@ const loginUser = (credentials) => async (dispatch) => {
 
 const signupUser = (credentials) => async (dispatch) => {
   try {
-    dispatch(signupRequest());
+    dispatch(request());
     // Effectuer une requête d'authentification à l'API
     const response = await fetch('http://localhost:3001/v1/api/user/signup', {
       method: 'POST',
@@ -50,11 +52,11 @@ const signupUser = (credentials) => async (dispatch) => {
       dispatch(loginFailure(userData));
     } else {
       dispatch(openModal('signupSuccess'));
-      dispatch(signupSuccess());
+      dispatch(success());
     }
   } catch (error) {
     // Dispatch de l'action de login échoué avec l'erreur
-    dispatch(signupFailure(error.message));
+    dispatch(failure(error.message));
   }
 };
 

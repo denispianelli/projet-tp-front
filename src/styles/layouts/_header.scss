@@ -15,22 +15,18 @@
   transition: all 0.5s ease-in-out;
   z-index: 99;
 
-  &__title {
-    height: 100%;
-    display: flex;
-    align-items: center;
+	&__title {
+		display: none;
+	}
+
+	&__right-container {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
 		color: var(--text-color-link);
-
-    &:hover {
-      color: var(--text-color);
-    }
-  }
-
-  &__title a {
-    height: 100%;
-    display: flex;
-    align-items: center;
-  }
+		cursor: pointer;
+		z-index: 99;
+	}
 
   &--scrolled {
     transition: all 0.5s ease-in-out;
@@ -82,7 +78,7 @@
 
 .account-container {
   position: relative;
-  height: 100%;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -90,13 +86,9 @@
   font-size: 0.8rem;
 	cursor: pointer;
 
-  &:hover .link {
+  &:hover {
     color: var(--text-color);
   }
-
-	&:hover .account-icon {
-		color: var(--text-color);
-	}
 }
 
 .account-dropdown-container {
@@ -108,8 +100,18 @@
 	}
 }
 
+.theme-icon {
+	min-width: 26px;
+	height: 26px;
+	margin-left: 1rem;
+
+	&:hover {
+		color: var(--text-color);
+	}
+}
+
 .account-icon {
-  width: 26px;
+  min-width: 26px;
   height: 26px;
   margin: 0 v.$spacing-small;
 }
@@ -130,17 +132,35 @@
     background-color: transparent;
     transition: all 0.5s ease-in-out;
 
+		&__title {
+			height: 100%;
+			display: flex;
+			align-items: center;
+	
+			&:hover {
+				color: var(--text-color);
+			}
+		}
+	
+		&__title a {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			color: var(--text-color-link);
+		}
+
     &:hover {
       background-color: var(--background-color);
     }
 
     &__title {
-      padding-left: 80px;
+      padding-left: 30px;
       font-size: 1.3vw;
     }
 
     &--scrolled {
       transition: all 0.5s ease-in-out;
+			background-color: var(--background-color);
     }
   }
 
@@ -192,13 +212,14 @@
   }
 
   .account-container {
-    margin-right: 90px;
-    font-size: 0.75rem;
+    margin-right: 40px;
+		color: var(--text-color-link);
   }
-	.account-icon {
-		width: 35px;
-		height: 35px;
-		padding: 0.3rem 0;
-	}
+
+	// .account-icon {
+	// 	width: 35px;
+	// 	height: 35px;
+	// 	padding: 0.3rem 0;
+	// }
 
 }

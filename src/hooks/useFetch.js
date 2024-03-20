@@ -29,9 +29,8 @@ const useFetch = (url, options = {}) => {
 
     fetchData();
 
-    // Cleanup function
     return () => setIsLoading(true);
-  }, [url, options]);
+  }, [url, JSON.stringify(options)]);
 
   return { data, isLoading, error };
 };

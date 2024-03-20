@@ -17,11 +17,10 @@
 .modal-content {
 	font-family: v.$font-family-base;
 	position: relative;
-  background-color: #0F1A1C;
-	color: white;
+  background-color: var(--background-color-modal);
+	color: var(--text-color);
   padding: 5rem 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-	border-radius: v.$border-radius;
   width: 100%; /* ou une largeur fixe, selon votre besoin */
 	height: 100%;
   z-index: 1001; /* Assure que le contenu de la modal est au-dessus de l'overlay */
@@ -39,7 +38,7 @@
   font-weight: bold;
   border: none;
 	border-radius: 50%;
-  background-color: #1A282D;
+  background-color: var(--background-color-alt-modal);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -51,7 +50,6 @@
 }
 
 @media screen and (min-width: 500px) {
-/* ModalOverlay.css */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -69,8 +67,6 @@
 .modal-content {
 	font-family: v.$font-family-base;
 	position: relative;
-  background-color: #0F1A1C;
-	color: white;
   padding: 5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	border-radius: v.$border-radius;
@@ -94,7 +90,6 @@
   font-weight: bold;
   border: none;
 	border-radius: 50%;
-  background-color: #1A282D;
 	display: flex;
 	align-items: center;
 	justify-content: center;

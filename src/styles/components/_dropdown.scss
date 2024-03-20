@@ -44,7 +44,7 @@
   padding-left: 45px;
   width: 100%;
   height: 53px;
-	color: var(--text-color-link);
+  color: var(--text-color-link);
 
   &:hover {
     color: var(--text-color);
@@ -62,54 +62,58 @@
 }
 
 .account-dropdown-container {
-	background: none;
-	border: none;
-	color: var(--text-color-link);
-	margin: 0 14px;
+  background: none;
+  border: none;
+  color: var(--text-color-link);
+  margin: 0 14px;
 }
 
 .account-dropdown {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .account-dropdown-content {
-	position: fixed;
-	top: 54px;
-	display: none;
-	background-color: var(--background-color);
+  position: fixed;
+  top: 54px;
+  display: none;
+  background-color: var(--background-color);
 }
 
 .account-dropdown-content--toggled {
-	display: block;
-	right: 20px;
+  display: block;
+  right: 20px;
 }
 
 .account-dropdown-item {
+  // padding: 20px 19px;
+	display: flex;
+	height: 53px;
+  font-size: 11.2px;
+  border-top: 1px solid var(--text-color);
+}
+
+.account-dropdown-link {
 	padding: 20px 19px;
-	font-size: 11.2px;
-	border-top: 1px solid var(--text-color);
-	height: 50px;
 }
 
 .account-dropdown-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: v.$heading-font-family;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: v.$heading-font-family;
 }
 
 .account-dropdown-item {
-	color: var(--text-color-link);
+  color: var(--text-color-link);
 
-	&:hover {
-		color: var(--text-color);
-	}
+  &:hover {
+    color: var(--text-color);
+  }
 }
-
 
 @media screen and (min-width: v.$breakpoint-large) {
   .dropdown {
@@ -119,7 +123,7 @@
   .dropdown-container {
     position: relative;
     display: flex;
-		align-items: center;
+    align-items: center;
     width: auto;
     border: none;
     margin-bottom: 0;
@@ -147,7 +151,7 @@
   // }
 
   .dropdown-item {
-		border-top: 1px solid var(--text-color);
+    border-top: 1px solid var(--text-color);
   }
 
   .dropdown-link {
@@ -173,11 +177,7 @@
     height: 15px;
   }
 
-	.account-dropdown-content--toggled {
-		right: 80px;
-	}
-
-
+  .account-dropdown-content--toggled {
+    right: 40px;
+  }
 }
-
-

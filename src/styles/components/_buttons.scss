@@ -1,29 +1,18 @@
 @use '../utils/variables' as v;
 
+.dropdown__button {
+	font-family: inherit;
+	width: 100%;
+	color: inherit;
+	background: none;
+	border: none;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 20px 19px;
+}
+
 .header__button {
-  font-family: v.$heading-font-family;
-  position: relative;
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  padding: 0;
-  font-size: 0.75rem;
-  text-align: center;
-  text-transform: uppercase;
-  color: inherit;
-  background: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:focus {
-    outline: none;
-  }
-
-	&:hover {
-		color: #fff;
-	}
+  display: none;
 }
 
 .home__button {
@@ -52,14 +41,13 @@
 }
 
 .form__button {
-  // @extend .home__button
   font-family: v.$font-family-base;
   width: 100%;
   padding: 1rem 0;
   border-radius: 5px;
   border: none;
-  background-color: #1b2628;
-  color: #525a5b;
+  background-color: var(--background-color-alt-modal);
+  color: var(--text-color-disabled-modal);
   font-weight: bold;
 	font-size: 1rem;
 
@@ -81,4 +69,28 @@
     transform: translateY(2px);
     box-shadow: 0px 3px 0px #800000;
   }
+}
+
+@media screen and (min-width: v.$breakpoint-large){
+	.header__button {
+		font-family: v.$heading-font-family;
+		position: relative;
+		height: 100%;
+		width: 100%;
+		display: inline-block;
+		padding: 0;
+		font-size: 0.75rem;
+		text-align: center;
+		text-transform: uppercase;
+		color: inherit;
+		background: none;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	
+		&:focus {
+			outline: none;
+		}
+	}
 }

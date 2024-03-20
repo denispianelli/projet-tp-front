@@ -13,8 +13,8 @@ html {
 :root {
   color-scheme: light dark;
   --text-color: #ffffff;
-	--text-color-link : #ffffffcc;
-	--background-color: #0b1416;
+  --text-color-link: #ffffffcc;
+  --background-color: #0b1416;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,10 +24,30 @@ html {
 
 @media (prefers-color-scheme: light) {
   :root {
-		--text-color: #000000;
-		--text-color-link : #424242;
-		--background-color: #F9FAFB;
+    --text-color: #000000;
+    --text-color-link: #424242;
+    --background-color: #f9fafb;
   }
+}
+
+.light {
+  --text-color: #000000;
+  --text-color-link: #424242;
+  --background-color: #f9fafb;
+
+	--background-color-modal: #FFFFFF;
+	--background-color-alt-modal: #EAEDEF;
+	--text-color-disabled-modal: #BBB5BB;
+}
+
+.dark {
+  --text-color: #ffffff;
+  --text-color-link: #ffffffa2;
+  --background-color: #1A1A1B;
+
+	--background-color-modal: #0F1A1C;
+	--background-color-alt-modal: #1A282D;
+	--text-color-disabled-modal: #51595B;
 }
 
 input::placeholder {
@@ -35,7 +55,7 @@ input::placeholder {
 }
 
 .close-icon {
-  color: #fff;
+  color: var(--text-color);
   width: 25px;
   height: 25px;
 }

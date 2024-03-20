@@ -1,0 +1,38 @@
+@use '../utils/variables' as v;
+
+.main-not-found {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow-x: hidden;
+}
+
+.section-not-found {
+	min-width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #A770FE;
+}
+
+.not-found {
+	&__title {
+		font-family: v.$heading-font-family;
+		font-size: 6rem;
+		color: #FFAE00;
+		text-shadow: 5px 5px 1px #fff;
+	}
+
+	&__text {
+		font-family: v.$font-family-base;
+		font-size: 1rem;
+		margin: 1rem;
+		padding: 1rem 2rem;
+		background-color: #fff;
+		border-radius: v.$border-radius;
+	}
+
+}

@@ -6,7 +6,6 @@
 		font-family: v.$heading-font-family;
 		font-size: 1.1rem;
 		margin-bottom: 2rem;
-		color: #fff;
 		text-transform: uppercase;
 		text-align: left;
 	}
@@ -20,7 +19,6 @@
 			display: flex;
 			width: 100%;
 			font-size: 1rem;
-			// text-align: center;
 		}
 	}
 
@@ -40,11 +38,10 @@
   width: 100%;
   height: 3.5rem;
   padding: 1rem;
-  // margin-bottom: 0.5rem;
   border: none;
   border-radius: 1.25rem;
-  background-color: #1a282d;
-  color: v.$primary-text-color;
+  background-color: var(--background-color-alt-modal);
+  color: var(--text-color);
   font-size: v.$base-font-size;
 	outline: none;
 	border: 2px solid transparent;
@@ -57,10 +54,6 @@
 	&[aria-invalid="true"] {
 		border: 2px solid #ff6e80;
 	}
-
-  // &--error:not(:focus) {
-  //   border: 2px solid #ff6e80;
-  // }
 
 }
 
@@ -107,11 +100,22 @@
 		visibility: visible;
 		left: 115px;
 	}
-}
 
-// .input-container:nth-of-type(2) .required-asterisk {
-// 	left:115px;
-// }
+	&--old-password{
+		visibility: visible;
+		left: 170px;
+	}
+
+	&--new-password{
+		visibility: visible;
+		left: 185px;
+	}
+
+	&--confirm-new-password{
+		visibility: visible;
+		left: 275px;
+	}
+}
 
 .loading {
 	display: flex;

@@ -6,10 +6,13 @@ import {
 
 const checkAuth = (dispatch) => {
   const token = localStorage.getItem('token');
+
   if (token) {
     const decoded = jwtDecode(token);
     const currentTime = Date.now() / 1000;
+
     if (decoded.exp < currentTime) {
+      localStorage.removeItem('token');
       dispatch(logout());
     } else {
       dispatch(loginSuccess(decoded));
@@ -17,4 +20,10 @@ const checkAuth = (dispatch) => {
   }
 };
 
-export default checkAuth;
+const logoutUser = (dispatch) => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('logged');
+  dispatch(logout());
+};
+
+export { checkAuth, logoutUser };
