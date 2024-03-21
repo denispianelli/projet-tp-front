@@ -51,4 +51,29 @@ const updateUserPassword = (data) => async (dispatch) => {
   }
 };
 
-export { updateUserEmail, updateUserPassword };
+const resetUserPassword = (data) => async (dispatch) => {
+  console.log(data);
+  try {
+    const response = await fetch('http://localhost:3001/v1/api/account/reset/password', {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${data.token}`,
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log('resetUserPassword ~ result:', result);
+
+    if (result.error) {
+      return Promise.resolve(result);
+    }
+
+    return Promise.resolve(true);
+  } catch (error) {
+    return Promise.reject();
+  }
+};
+
+export { updateUserEmail, updateUserPassword, resetUserPassword };

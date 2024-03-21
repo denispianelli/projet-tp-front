@@ -1,5 +1,5 @@
 import {
-  request, loginSuccess, loginFailure, success, failure,
+  request, loginSuccess, loginFailure, success, failure, logout,
 } from '../slices/authSlice';
 import { openModal } from '../slices/modalSlice';
 
@@ -20,12 +20,10 @@ const loginUser = (credentials) => async (dispatch) => {
     if (userData.error) {
       dispatch(loginFailure(userData.error));
       localStorage.removeItem('token');
-      localStorage.removeItem('logged');
     } else {
       dispatch(loginSuccess(userData));
 
       localStorage.setItem('token', userData.token);
-      localStorage.setItem('logged', 'true');
     }
     // Dispatch de l'action de login réussi avec les données utilisateur
   } catch (error) {
@@ -60,4 +58,9 @@ const signupUser = (credentials) => async (dispatch) => {
   }
 };
 
-export { loginUser, signupUser };
+const logoutUser = (dispatch) => {
+  localStorage.removeItem('token');
+  dispatch(logout());
+};
+
+export { loginUser, signupUser, logoutUser };

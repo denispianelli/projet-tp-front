@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { closeMenu } from '../../store/slices/menuSlice';
-import { logoutUser } from '../../utils/authUtils';
+import { logoutUser } from '../../store/middleware/authMiddleware';
 
 function AccountDropdown({ title }) {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
 
   const user = useSelector((state) => state.auth.user);
+  const isAdmin = user.role === 'admin';
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -40,6 +40,13 @@ function AccountDropdown({ title }) {
         </button>
       </div>
       <ul className={isOpenClassName}>
+        {isAdmin && (
+        <li className="account-dropdown-item">
+          <Link onClick={() => toggleDropdown()} className="account-dropdown-link" to={`/user/${user.username}/dashboard`}>
+            Tableau de bord
+          </Link>
+        </li>
+        )}
         <li className="account-dropdown-item">
           <Link onClick={() => toggleDropdown()} className="account-dropdown-link" to={`/user/${user.username}`}>
             Voir le profil
@@ -47,7 +54,7 @@ function AccountDropdown({ title }) {
         </li>
         <li className="account-dropdown-item">
           <button className="dropdown__button" type="button" onClick={() => logoutUser(dispatch)}>
-            Logout
+            Se déconnecter
           </button>
         </li>
       </ul>

@@ -49,6 +49,14 @@
 	}
 }
 
+.mail-icon {
+	display: block;
+	width: 3rem;
+	height: 3rem;
+	text-align: center;
+	margin: 2rem 0;
+}
+
 @media screen and (min-width: 500px) {
 .modal-overlay {
   position: fixed;
@@ -71,7 +79,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	border-radius: v.$border-radius;
   width: 90%; /* ou une largeur fixe, selon votre besoin */
-	min-height: 600px;
+	min-height: 640px;
 	height: auto;
 	padding-bottom: 0;
   max-width: 500px; /* Assure que la modal ne soit pas trop large sur grands écrans */

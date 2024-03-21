@@ -54,8 +54,9 @@ export default function Signin() {
 
         <p className="form__text">
           Tu as oublié ton
-          <span className="form__link"> mot de passe</span>
-          {' '}
+          <button className="form__link" type="button" onClick={() => dispatch(openModal('resetPassword'))}>
+            mot de passe
+          </button>
           ?
         </p>
 
@@ -84,7 +85,6 @@ export default function Signin() {
             Se connecter
           </button>
         )}
-
       </form>
       <p className={loadingClassName}>Chargement en cours...</p>
     </div>

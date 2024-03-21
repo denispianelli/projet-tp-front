@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isAuthenticated: false,
+  isAdmin: false,
   user: null,
   error: null,
   loading: false,
@@ -19,6 +20,7 @@ const authSlice = createSlice({
     loginSuccess: (state, action) => ({
       ...state,
       isAuthenticated: true,
+      isAdmin: action.payload.role === 'admin',
       user: action.payload,
       error: null,
       loading: false,

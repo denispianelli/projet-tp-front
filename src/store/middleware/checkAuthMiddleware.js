@@ -1,10 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
+import { logout, loginSuccess } from '../slices/authSlice';
 
-import {
-  logout, loginSuccess,
-} from '../store/slices/authSlice';
-
-const checkAuth = (dispatch) => {
+const checkAuthMiddleware = () => async (dispatch) => {
   const token = localStorage.getItem('token');
 
   if (token) {
@@ -20,10 +17,4 @@ const checkAuth = (dispatch) => {
   }
 };
 
-const logoutUser = (dispatch) => {
-  localStorage.removeItem('token');
-  localStorage.removeItem('logged');
-  dispatch(logout());
-};
-
-export { checkAuth, logoutUser };
+export default checkAuthMiddleware;

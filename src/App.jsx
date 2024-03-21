@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Modal from './components/ui/Modal';
 import Home from './pages/Home';
-import Header from './layouts/Header';
-import Footer from './layouts/Footer';
 import { closeModal } from './store/slices/modalSlice';
 import Signin from './components/form/Signin';
-import { checkAuth } from './utils/authUtils';
 import { resetError } from './store/slices/authSlice';
 import Signup from './components/form/Signup';
 import SignupSuccess from './components/ui/signupSuccess';
@@ -17,15 +14,28 @@ import ModifyEmail from './components/form/ModifyEmail';
 import EmailUpdated from './components/ui/EmailUpdated';
 import PasswordUpdated from './components/ui/PasswordUpdated';
 import ModifyPassword from './components/form/ModifyPassword';
+import Dashboard from './pages/Dashboard';
+import checkAuthMiddleware from './store/middleware/checkAuthMiddleware';
+import RequestResetPassword from './components/form/RequestResetPassword';
+import PasswordReset from './components/ui/PasswordReset';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   const dispatch = useDispatch();
+
+  const [isAuthChecked, setIsAuthChecked] = useState(false);
+
+  useEffect(() => {
+    dispatch(checkAuthMiddleware());
+    setIsAuthChecked(true);
+  }, []);
 
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
   const modalContent = useSelector((state) => state.modal.content);
   const themeMode = useSelector((state) => state.theme.mode);
 
-  const isAuth = localStorage.getItem('logged') === 'true';
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   let componentToRender = null;
 
@@ -51,6 +61,12 @@ function App() {
     case 'passwordUpdated':
       componentToRender = <PasswordUpdated />;
       break;
+    case 'resetPassword':
+      componentToRender = <RequestResetPassword />;
+      break;
+    case 'passwordReset':
+      componentToRender = <PasswordReset />;
+      break;
     default:
       break;
   }
@@ -62,10 +78,6 @@ function App() {
   }
 
   useEffect(() => {
-    checkAuth(dispatch);
-  }, [dispatch]);
-
-  useEffect(() => {
     document.documentElement.classList.add(themeMode);
 
     return () => {
@@ -73,15 +85,21 @@ function App() {
     };
   }, [themeMode]);
 
+  if (!isAuthChecked) return null;
+
   return (
     <>
-      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/user/:username"
           element={isAuth ? <Profile /> : <Navigate to="/" />}
         />
+        <Route
+          path="/user/:username/dashboard"
+          element={isAdmin ? <Dashboard /> : <Navigate to="/" />}
+        />
+        <Route path="/account/reset/password/:token" element={<ResetPassword />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       {isModalOpen && (
@@ -94,7 +112,6 @@ function App() {
           {componentToRender}
         </Modal>
       )}
-      <Footer />
     </>
   );
 }
