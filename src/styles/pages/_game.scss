@@ -1,0 +1,12 @@
+.main-game {
+	background-color: var(--background-color);
+	padding-top: 54px;
+}
+
+.section-game {
+	width: 100vw;
+	min-height: calc(100vh - 54px);	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

@@ -33,11 +33,13 @@ html {
 .light {
   --text-color: #000000;
   --text-color-link: #424242;
-  --background-color: #f9fafb;
+  --background-color: #F9FAFB;
 
 	--background-color-modal: #FFFFFF;
 	--background-color-alt-modal: #EAEDEF;
 	--text-color-disabled-modal: #BBB5BB;
+
+	--background-color-header: #FFFFFF;
 }
 
 .dark {
@@ -48,6 +50,8 @@ html {
 	--background-color-modal: #0F1A1C;
 	--background-color-alt-modal: #1A282D;
 	--text-color-disabled-modal: #51595B;
+
+	--background-color-header: #101615;
 }
 
 input::placeholder {

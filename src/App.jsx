@@ -19,6 +19,7 @@ import checkAuthMiddleware from './store/middleware/checkAuthMiddleware';
 import RequestResetPassword from './components/form/RequestResetPassword';
 import PasswordReset from './components/ui/PasswordReset';
 import ResetPassword from './pages/ResetPassword';
+import Game from './pages/Game';
 
 function App() {
   const dispatch = useDispatch();
@@ -100,6 +101,7 @@ function App() {
           element={isAdmin ? <Dashboard /> : <Navigate to="/" />}
         />
         <Route path="/account/reset/password/:token" element={<ResetPassword />} />
+        <Route path="/game" element={<Game />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       {isModalOpen && (
