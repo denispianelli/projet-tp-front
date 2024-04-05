@@ -7,7 +7,7 @@ import Footer from '../layouts/Footer';
 import GameContainer from '../features/GameContainer';
 
 export default function Game() {
-  const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1023px)' });
   const navigate = useNavigate();
 
   return (
@@ -21,7 +21,7 @@ export default function Game() {
               <button
                 className="home__button"
                 type="button"
-                onClick={() => navigate('/discover')}
+                onClick={() => navigate('/guide')}
               >
                 Découvrir
               </button>

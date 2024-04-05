@@ -8,7 +8,6 @@ export default function ModifyPassword() {
   const dispatch = useDispatch();
 
   const { loading, error } = useSelector((state) => state.auth);
-  console.log('ModifyPassword ~ error:', error);
 
   const {
     register,
