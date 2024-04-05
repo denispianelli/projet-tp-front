@@ -9,7 +9,15 @@ import { updateUserEmail } from '../../store/middleware/updateUserMiddleware';
 export default function ModifyEmail() {
   const dispatch = useDispatch();
 
-  const { loading, error } = useSelector((state) => state.auth);
+  let { loading, error } = useSelector((state) => state.auth);
+
+  if (
+    error?.includes(
+      "la valeur d'une clé dupliquée rompt la contrainte unique « user_email_key »",
+    )
+  ) {
+    error = 'Cette adresse mail est déjà utilisée';
+  }
 
   const {
     register,

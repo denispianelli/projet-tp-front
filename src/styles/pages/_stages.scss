@@ -1,0 +1,9 @@
+@use './enemies';
+
+.main-stages {
+	@extend .main-enemies;
+}
+
+.section-stages {
+	@extend .section-enemies;
+}

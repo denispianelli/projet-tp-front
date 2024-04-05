@@ -25,22 +25,38 @@ export default class MainMenu extends Scene {
    *                        Contient les pièces du joueur et les personnages débloqués.
    */
   async init(data) {
+    this.audioManager = data.audioManager;
     // Initialisation des touches de curseur
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    // Récupère les données transmises depuis la scène précédente
-    this.playerCoins = data.playerCoins;
-    this.playerUnlockedCharacters = data.playerUnlockedCharacters;
-    this.audioManager = data.audioManager;
+    this.dataManager = new DataManager(this);
+    this.token = localStorage.getItem('token');
+
+    if (this.token) {
+      try {
+        const response = await this.dataManager.getPlayerCoins(this.token);
+
+        this.playerCoins = response.coins;
+        this.playerUnlockedCharacters = await this.dataManager.getUserUnlockedCharacters(
+          this.token,
+        );
+      } catch (error) {
+        console.error(
+          'Une erreur est survenue lors de la récupération des données du joueur :',
+          error,
+        );
+      }
+    }
+    console.log('MainMenu player coin', this.playerCoins);
 
     // Initialise le gestionnaire de données pour récupérer les données des personnages
-    this.dataManager = new DataManager(this);
     this.charactersData = await this.dataManager.getAllCharactersData();
   }
 
   /**
    * Méthode appelée automatiquement lors de la création de la scène.
-   * Initialise la musique du menu principal, affiche le menu principal et gère les interactions utilisateur.
+   * Initialise la musique du menu principal, affiche le menu principal et gère
+   * les interactions utilisateur.
    */
   create() {
     // Crée la musique de fond et les effets sonores principaux
@@ -49,7 +65,6 @@ export default class MainMenu extends Scene {
 
     // Récupère le conteneur du jeu et crée un conteneur pour le menu
     this.gameContainer = document.querySelector('#game-container');
-    console.log(this.gameContainer);
     this.menuContainer = document.createElement('div');
     this.menuContainer.classList.add('main-menu-container');
     this.gameContainer.prepend(this.menuContainer);
@@ -92,7 +107,8 @@ export default class MainMenu extends Scene {
 
   /**
    * Démarre le jeu lorsque le joueur clique sur "Démarrer".
-   * Joue un effet sonore de clic, supprime le menu principal et démarre la scène de sélection de personnage.
+   * Joue un effet sonore de clic, supprime le menu principal et démarre la
+   * scène de sélection de personnage.
    */
   startGame = () => {
     // Joue un effet sonore de clic avec le volume actuel

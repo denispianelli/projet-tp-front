@@ -40,22 +40,36 @@ html {
 	--text-color-disabled-modal: #BBB5BB;
 
 	--background-color-header: #FFFFFF;
+
+	--border-bottom-color: rgb(229, 231, 235)
 }
 
 .dark {
   --text-color: #ffffff;
   --text-color-link: #ffffffa2;
-  --background-color: #1A1A1B;
+  --background-color: #111827;
 
 	--background-color-modal: #0F1A1C;
 	--background-color-alt-modal: #1A282D;
 	--text-color-disabled-modal: #51595B;
 
 	--background-color-header: #101615;
+
+	--border-bottom-color: rgb(31, 41, 55);
 }
 
 input::placeholder {
   color: #6f8186;
+}
+
+.title {
+	width: 100%;
+	font-family: v.$heading-font-family;
+	text-transform: uppercase;
+	color: #fff;
+	text-align: center;
+	font-size: 2rem;
+	text-shadow: 3px 5px 1px black;
 }
 
 .close-icon {

@@ -74,9 +74,6 @@ export default class Preloader extends Scene {
       'audio/music/pookatori-and-friends-kevin-macleod-main-version-24903-04-07.mp3',
     ]);
 
-    // Chargement des polices
-    this.load.bitmapFont('VT323', 'fonts/VT323/VT323-Regular.bmp');
-
     // Chargement des images
     this.load.image('main-menu-bg', 'ui/mainMenu/main-menu-bg.jpg');
     this.load.image('xpbar', 'ui/hud/GuI-xp-colored.png');

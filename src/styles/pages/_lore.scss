@@ -1,0 +1,56 @@
+@use './profil';
+@use '../utils/variables' as v;
+
+.main-lore {
+ @extend .main-profil;
+ width: 100vw;
+}
+
+.section-lore {
+	@extend .section-profil;
+	width: 100vw;
+	min-height: 100vh;
+	padding: 54px 0 0 0;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.lore {
+	&__title {
+		color: var(--text-color);
+		font-family: v.$heading-font-family;
+		font-size: 1.5rem;
+		margin: 2rem 0 1rem 0;
+		text-align: center;
+	}
+
+	&__text {
+		font-family: v.$font-family-base;
+		color: var(--text-color);
+		padding: 1rem;
+		text-align: center;
+	}
+
+	&__img {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: v.$breakpoint-large) {
+	.lore {
+		&__title {
+			width: 50%;
+			margin-top: 5rem;
+			font-size: 2rem;
+		}
+
+		&__text {
+			width: 50%;
+			font-size: 1.5rem;
+
+			&:last-of-type {
+				margin-bottom: 5rem;
+			}
+		}
+	}
+}

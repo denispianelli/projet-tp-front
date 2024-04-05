@@ -18,5 +18,12 @@
 @use './pages/profil';
 @use './pages/resetPassword';
 @use './pages/game';
+@use './pages/contact';
+@use './pages/privacy-policy';
+@use './pages/lore';
+@use './pages/enemies';
+@use './pages/characters';
+@use './pages/stages';
+@use './pages/guide';
 
 @use './utils/variables' as v;

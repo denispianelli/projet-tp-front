@@ -1,0 +1,56 @@
+@use './enemies';
+@use '../utils/variables' as v;
+
+.main-characters {
+  @extend .main-enemies;
+}
+
+.section-characters {
+  @extend .section-enemies;
+}
+
+.character-card-container {
+  @extend .enemy-card-container;
+}
+
+.character {
+  @extend .enemy;
+
+  &__title {
+    @extend .enemy__title;
+  }
+
+  &__subtitle {
+    @extend .enemy__subtitle;
+  }
+
+  &__description {
+    @extend .enemy__text;
+  }
+
+  &__text {
+    @extend .enemy__text;
+
+    & span {
+      text-align: right;
+    }
+  }
+
+  &__card {
+    @extend .enemy__card;
+		flex: 0 0 300px;
+		height: 300px;
+  }
+
+  &__img {
+    @extend .enemy__img;
+  }
+}
+
+@media screen and (min-width: v.$breakpoint-large) {
+	.character-card-container {
+		display: grid;
+		justify-content: center;
+		grid-template-columns: repeat(3, 300px);
+	}
+}

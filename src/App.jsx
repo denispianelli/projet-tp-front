@@ -20,6 +20,15 @@ import RequestResetPassword from './components/form/RequestResetPassword';
 import PasswordReset from './components/ui/PasswordReset';
 import ResetPassword from './pages/ResetPassword';
 import Game from './pages/Game';
+import EmailVerified from './pages/EmailVerified';
+import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import LegalNotice from './pages/LegalNotice';
+import Lore from './pages/Lore';
+import Enemies from './pages/Enemies';
+import Characters from './pages/Characters';
+import Stages from './pages/Stages';
+import Guide from './pages/Guide';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +43,7 @@ function App() {
   const isModalOpen = useSelector((state) => state.modal.isModalOpen);
   const modalContent = useSelector((state) => state.modal.content);
   const themeMode = useSelector((state) => state.theme.mode);
+  const themeModeLocal = localStorage.getItem('theme');
 
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
@@ -79,7 +89,11 @@ function App() {
   }
 
   useEffect(() => {
-    document.documentElement.classList.add(themeMode);
+    if (themeModeLocal) {
+      document.documentElement.classList.add(themeModeLocal);
+    } else {
+      document.documentElement.classList.add(themeMode);
+    }
 
     return () => {
       document.documentElement.classList.remove(themeMode);
@@ -100,8 +114,20 @@ function App() {
           path="/user/:username/dashboard"
           element={isAdmin ? <Dashboard /> : <Navigate to="/" />}
         />
-        <Route path="/account/reset/password/:token" element={<ResetPassword />} />
+        <Route
+          path="/account/reset/password/:token"
+          element={<ResetPassword />}
+        />
+        <Route path="/account/email-verified/:token" element={<EmailVerified />} />
+        <Route path="/guide" element={<Guide />} />
+        <Route path="/characters" element={<Characters />} />
+        <Route path="/enemies" element={<Enemies />} />
+        <Route path="/stages" element={<Stages />} />
+        <Route path="/lore" element={<Lore />} />
         <Route path="/game" element={<Game />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/legal-notice" element={<LegalNotice />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>
       {isModalOpen && (

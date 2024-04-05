@@ -12,58 +12,59 @@
   align-items: center;
   font-family: v.$heading-font-family;
   text-transform: uppercase;
-  transition: all 0.5s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
   z-index: 99;
 
-	&__title {
-		display: none;
-	}
+  &__title {
+    display: none;
+  }
 
-	&__right-container {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		color: var(--text-color-link);
-		cursor: pointer;
-		z-index: 99;
-	}
+  &__right-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-color-link);
+    cursor: pointer;
+    z-index: 99;
+  }
 
   &--scrolled {
-    transition: all 0.5s ease-in-out;
     background-color: var(--background-color-header);
+    border-bottom: 1px solid var(--border-bottom-color);
+		transition: all 0.3s ease-in-out;
   }
 }
 
 .navbar {
   position: fixed;
   font-size: 0.7rem;
-  top: 0px;
+  top: 54px;
   width: 100vw;
   height: 100%;
   max-height: 0px;
   overflow: hidden;
   overflow-x: hidden;
-  background-color: var(--background-color);
-  transition: all 1.2s;
-  padding-top: 0px;
+  transition: max-height 1s;
+	transition: max-height 0.5s ease-in-out;
+	background-color: var(--background-color);
 
   &__list {
     flex-direction: column;
     align-items: center;
 
     &:nth-child(1) {
-      border-top: 1px solid var(--text-color);
+      border-top: 1px solid var(--border-bottom-color);
     }
   }
 
   &__item {
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--border-bottom-color);
   }
 
   &__link {
     display: block;
     padding: 19px 0 19px v.$spacing-medium;
-		color: var(--text-color-link);
+    color: var(--text-color-link);
 
     &:hover {
       color: var(--text-color);
@@ -71,7 +72,6 @@
   }
 
   &--visible {
-    padding-top: 54px;
     max-height: 100vh;
   }
 }
@@ -84,7 +84,7 @@
   justify-content: center;
   margin-right: 14px;
   font-size: 0.8rem;
-	cursor: pointer;
+  cursor: pointer;
 
   &:hover {
     color: var(--text-color);
@@ -94,20 +94,19 @@
 .account-dropdown-container {
   cursor: pointer;
 
-	&:hover {
-		color: var(--text-color);
-	
-	}
+  &:hover {
+    color: var(--text-color);
+  }
 }
 
 .theme-icon {
-	min-width: 26px;
-	height: 26px;
-	margin-left: 1rem;
+  min-width: 26px;
+  height: 26px;
+  margin-left: 1rem;
 
-	&:hover {
-		color: var(--text-color);
-	}
+  &:hover {
+    color: var(--text-color);
+  }
 }
 
 .account-icon {
@@ -130,27 +129,27 @@
   .header {
     display: flex;
     background-color: transparent;
-    transition: all 0.5s ease-in-out;
 
-		&__title {
-			height: 100%;
-			display: flex;
-			align-items: center;
-	
-			&:hover {
-				color: var(--text-color);
-			}
-		}
-	
-		&__title a {
-			height: 100%;
-			display: flex;
-			align-items: center;
-			color: var(--text-color-link);
-		}
+    &__title {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        color: var(--text-color);
+      }
+    }
+
+    &__title a {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      color: var(--text-color-link);
+    }
 
     &:hover {
-      background-color: var(--background-color);
+      background-color: var(--background-color-header);
+      border-bottom: 1px solid var(--border-bottom-color);
     }
 
     &__title {
@@ -159,8 +158,8 @@
     }
 
     &--scrolled {
-      transition: all 0.5s ease-in-out;
-			background-color: var(--background-color-header);
+      // transition: all 0.5s ease-in-out;
+      background-color: var(--background-color-header);
     }
   }
 
@@ -207,19 +206,18 @@
       justify-content: center;
       align-items: center;
       border: none;
-			color: var(--text-color-link);
+      color: var(--text-color-link);
     }
   }
 
   .account-container {
     margin-right: 40px;
-		color: var(--text-color-link);
+    color: var(--text-color-link);
   }
 
-	// .account-icon {
-	// 	width: 35px;
-	// 	height: 35px;
-	// 	padding: 0.3rem 0;
-	// }
-
+  // .account-icon {
+  // 	width: 35px;
+  // 	height: 35px;
+  // 	padding: 0.3rem 0;
+  // }
 }

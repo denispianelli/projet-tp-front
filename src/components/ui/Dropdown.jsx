@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
+import { useMediaQuery } from 'react-responsive';
 import PropTypes from 'prop-types';
+import { closeMenu } from '../../store/slices/menuSlice';
 
 function Dropdown({ title, items }) {
+  const dispatch = useDispatch();
+
   const [isOpen, setIsOpen] = useState(false);
 
+  const isMobile = useMediaQuery({ query: '(max-width: 1023px)' });
+  const isDesktop = useMediaQuery({ query: '(min-width: 1024px)' });
+
   const toggleDropdown = () => setIsOpen(!isOpen);
+
+  const closeDropdown = () => setIsOpen(false);
+
+  const handleLinkClick = () => {
+    closeDropdown();
+    dispatch(closeMenu());
+  };
+
   const isClickedClassName = isOpen
     ? 'dropdown-container dropdown-container--clicked'
     : 'dropdown-container';
@@ -15,11 +31,15 @@ function Dropdown({ title, items }) {
     : 'dropdown-content';
 
   return (
-    <div className="dropdown">
+    <div
+      className="dropdown"
+      onMouseEnter={isDesktop ? toggleDropdown : undefined}
+      onMouseLeave={isDesktop ? toggleDropdown : undefined}
+    >
       <button
         type="button"
         className={isClickedClassName}
-        onClick={toggleDropdown}
+        onClick={isMobile ? toggleDropdown : undefined}
         onKeyDown={(e) => {
           if (e.key === 'Enter') toggleDropdown();
         }}
@@ -33,7 +53,11 @@ function Dropdown({ title, items }) {
         <ul className={isOpenClassName}>
           {items.map((item) => (
             <li key={item.path} className="dropdown-item">
-              <Link className="dropdown-link" to={item.path}>
+              <Link
+                className="dropdown-link"
+                to={item.path}
+                onClick={handleLinkClick}
+              >
                 {item.label}
               </Link>
             </li>

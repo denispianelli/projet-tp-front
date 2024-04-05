@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -9,11 +10,22 @@ export default function Footer() {
         <span className="line" />
       </div>
       <ul className="footer__list">
-        <li className="footer__item">contact</li>
-        <li className="footer__item">politque de confidentialité</li>
-        <li className="footer__item">mention légales</li>
-        <li className="footer__item">© 2024 o&apos;survivors</li>
+        <Link className="footer__item" to="/contact">
+          <li>contact</li>
+        </Link>
+        <Link className="footer__item" to="/privacy-policy">
+          <li>politque de confidentialité</li>
+        </Link>
+        <Link className="footer__item" to="/legal-notice">
+          <li>mention légales</li>
+        </Link>
       </ul>
+      <div className="line-container">
+        <span className="line" />
+        <img src="/assets/ui/home/coin-animated.gif" alt="piece animée" />
+        <span className="line" />
+      </div>
+      <p className="footer__copyright">© 2024 o&apos;survivors</p>
     </footer>
   );
 }

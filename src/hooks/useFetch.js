@@ -15,9 +15,9 @@ const useFetch = (url, options = {}) => {
             'Content-Type': 'application/json',
           },
         });
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch data');
+        // }
         const jsonData = await response.json();
         setData(jsonData);
         setIsLoading(false);

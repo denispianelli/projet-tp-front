@@ -38,6 +38,8 @@ export default class Game extends Scene {
    * Crée les éléments visuels et les mécanismes de jeu.
    */
   create() {
+    this.enemiesKilled = 0;
+    this.playerCoinsGained = 0;
     // Création dynamique de la carte
     this.loadMap(this.selectedMap);
 
@@ -167,6 +169,7 @@ export default class Game extends Scene {
 
     // Met à jour les pièces du joueur dans la base de données
     this.updateUserCoins();
+    this.inputManager.removeInput();
   }
 
   /**
@@ -177,6 +180,7 @@ export default class Game extends Scene {
     if (this.playerCoins !== undefined) {
       // Calcule le nombre total de pièces du joueur (pièces gagnées pendant la partie + pièces déjà possédées)
       const updatedCoins = this.playerCoinsGained + this.playerCoins;
+      console.log('Game ~ updateUserCoins ~ updatedCoins:', updatedCoins);
 
       // Met à jour le nombre de pièces dans la base de données via le gestionnaire de données
       this.dataManager.updateOwnedCoins(updatedCoins);

@@ -21,6 +21,7 @@ export default class CharacterMenu extends Scene {
     this.playerUnlockedCharacters = data.playerUnlockedCharacters;
     this.characters = data.charactersData;
     this.playerCoins = data.playerCoins;
+    this.updatedPlayerCoins = data.playerCoins;
     this.audioManager = data.audioManager;
 
     try {
@@ -108,7 +109,7 @@ export default class CharacterMenu extends Scene {
       112,
       22,
       'wizard-unlocked',
-      this.characters[0],
+      this.characters && this.characters[0],
     );
 
     this.displayConfirmBtn(Wizard, WizardStaff);
@@ -131,8 +132,8 @@ export default class CharacterMenu extends Scene {
         this.characterTitle.y,
         'SELECTION DU PERSONNAGE',
         {
-          fontFamily: 'VT323',
-          fontSize: 27,
+          fontFamily: 'PressStart2P',
+          fontSize: 17,
           color: '#000000',
           stroke: 'black',
           strokeThickness: 1,
@@ -163,10 +164,10 @@ export default class CharacterMenu extends Scene {
     const wizardNameText = this.add.text(
       this.wizardSelectionBtn.x - 55,
       this.wizardSelectionBtn.y - 55,
-      `${this.characters[0].name}`,
+      `${this.characters && this.characters[0].name}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -201,10 +202,10 @@ export default class CharacterMenu extends Scene {
     const knightNameText = this.add.text(
       this.knightSelectionBtn.x - 55,
       this.knightSelectionBtn.y - 55,
-      `${this.characters[1].name}`,
+      `${this.characters && this.characters[1].name}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -231,10 +232,10 @@ export default class CharacterMenu extends Scene {
     const rogueNameText = this.add.text(
       this.rogueSelectionBtn.x - 55,
       this.rogueSelectionBtn.y - 55,
-      `${this.characters[2].name}`,
+      `${this.characters && this.characters[2].name}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -276,10 +277,10 @@ export default class CharacterMenu extends Scene {
     this.textConfirmation = this.add.text(
       this.characterSelection.x - 210,
       this.characterSelection.y + 30,
-      `${character.fullname}`,
+      `${character?.fullname}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -309,8 +310,8 @@ export default class CharacterMenu extends Scene {
         this.characterConfirmBtn.y,
         'Confirmer',
         {
-          fontFamily: 'VT323',
-          fontSize: 25,
+          fontFamily: 'PressStart2P',
+          fontSize: 13,
           color: 'black',
         },
       )
@@ -333,8 +334,8 @@ export default class CharacterMenu extends Scene {
     this.confirmImageGroup.add(this.characterConfirmBtn);
     this.buyCharacterText = this.add
       .text(this.characterConfirmBtn.x, this.characterConfirmBtn.y, 'Acheter', {
-        fontFamily: 'VT323',
-        fontSize: 25,
+        fontFamily: 'PressStart2P',
+        fontSize: 13,
         color: 'black',
       })
       .setOrigin(0.5);
@@ -356,8 +357,8 @@ export default class CharacterMenu extends Scene {
       this.coin.y - 13,
       `${character.cost}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 25,
+        fontFamily: 'PressStart2P',
+        fontSize: 13,
       },
     );
 
@@ -397,7 +398,7 @@ export default class CharacterMenu extends Scene {
             return;
           }
 
-          this.dataManager.updateUnlockedCharacter(this.characters[1].id);
+          this.dataManager.unlockedCharacter(this.characters[1].id);
           this.updatedPlayerCoins = this.playerCoins - this.characters[1].cost;
           this.dataManager.updateOwnedCoins(this.updatedPlayerCoins);
           this.updateDisplayPlayerCoins();
@@ -422,8 +423,8 @@ export default class CharacterMenu extends Scene {
             this.knightSelectionBtn.y - 55,
             `${this.characters[1].name}`,
             {
-              fontFamily: 'VT323',
-              fontSize: 22,
+              fontFamily: 'PressStart2P',
+              fontSize: 10,
             },
           );
           this.knightSelectionBtn.setInteractive();
@@ -470,7 +471,7 @@ export default class CharacterMenu extends Scene {
             return;
           }
 
-          this.dataManager.updateUnlockedCharacter(this.characters[2].id);
+          this.dataManager.unlockedCharacter(this.characters[2].id);
           this.updatedPlayerCoins = this.playerCoins - this.characters[2].cost;
           this.dataManager.updateOwnedCoins(this.updatedPlayerCoins);
           this.updateDisplayPlayerCoins();
@@ -495,8 +496,8 @@ export default class CharacterMenu extends Scene {
             this.rogueSelectionBtn.y - 55,
             `${this.characters[2].name}`,
             {
-              fontFamily: 'VT323',
-              fontSize: 22,
+              fontFamily: 'PressStart2P',
+              fontSize: 10,
             },
           );
           this.rogueSelectionBtn.setInteractive();
@@ -528,8 +529,8 @@ export default class CharacterMenu extends Scene {
 
     this.cointText = this.add
       .text(this.width / 2, 45, `${this.playerCoins ? this.playerCoins : 0}`, {
-        fontFamily: 'VT323',
-        fontSize: 28,
+        fontFamily: 'PressStart2P',
+        fontSize: 16,
       })
       .setDepth(999);
   }

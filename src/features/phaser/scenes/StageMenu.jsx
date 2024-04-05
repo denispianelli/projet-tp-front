@@ -89,8 +89,8 @@ export default class StageMenu extends Scene {
 
     this.add
       .text(this.width / 2, 45, `${this.playerCoins ? this.playerCoins : 0}`, {
-        fontFamily: 'VT323',
-        fontSize: 28,
+        fontFamily: 'PressStart2P',
+        fontSize: 13,
       })
       .setDepth(999);
   }
@@ -105,8 +105,8 @@ export default class StageMenu extends Scene {
 
     this.add
       .text(this.stageTitle.x, this.stageTitle.y, 'SELECTION DU NIVEAU', {
-        fontFamily: 'VT323',
-        fontSize: 27,
+        fontFamily: 'PressStart2P',
+        fontSize: 15,
         color: '#000000',
         stroke: 'black',
         strokeThickness: 1,
@@ -137,8 +137,8 @@ export default class StageMenu extends Scene {
       this.catacombsSelectionBtn.y - 55,
       'Catacombs',
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -157,8 +157,8 @@ export default class StageMenu extends Scene {
       this.desertSelectionBtn.y - 55,
       'Desert',
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
 
@@ -177,8 +177,8 @@ export default class StageMenu extends Scene {
       this.meadowSelectionBtn.y - 55,
       'Prairie',
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
       },
     );
   }
@@ -217,8 +217,8 @@ export default class StageMenu extends Scene {
       this.stageSelection.y + 30,
       `${stage}`,
       {
-        fontFamily: 'VT323',
-        fontSize: 22,
+        fontFamily: 'PressStart2P',
+        fontSize: 10,
         wordWrap: { width: 300 },
       },
     );
@@ -283,8 +283,8 @@ export default class StageMenu extends Scene {
 
     this.confirmStageText = this.add
       .text(this.stageConfirmBtn.x, this.stageConfirmBtn.y, 'Confirmer', {
-        fontFamily: 'VT323',
-        fontSize: 25,
+        fontFamily: 'PressStart2P',
+        fontSize: 13,
         color: 'black',
       })
       .setOrigin(0.5);

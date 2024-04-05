@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FaRegCircleUser } from 'react-icons/fa6';
 import { FaUserAstronaut } from 'react-icons/fa';
-import { MdOutlineLightMode } from 'react-icons/md';
+import { MdOutlineLightMode, MdOutlineDarkMode } from 'react-icons/md';
 import { openModal } from '../store/slices/modalSlice';
 import Navbar from '../components/ui/Navbar';
 import AccountDropdown from '../components/ui/AccountDropdown';
-import { toggleTheme } from '../store/slices/themeSlice';
+import {
+  setDarkTheme,
+  setLightTheme,
+  toggleTheme,
+} from '../store/slices/themeSlice';
 import Burger from '../components/ui/Burger';
 
 export default function Header() {
@@ -17,10 +21,19 @@ export default function Header() {
 
   const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
+  const theme = useSelector((state) => state.theme.mode);
+  const themeLocal = localStorage.getItem('theme');
+
+  useEffect(() => {
+    if (themeLocal) {
+      dispatch(themeLocal === 'dark' ? setDarkTheme() : setLightTheme());
+    }
+  }, []);
+
   useEffect(() => {
     function handleScroll() {
       const scrollTop = window.scrollY;
-      const scrollThreshold = 100;
+      const scrollThreshold = 10;
 
       if (scrollTop > scrollThreshold) {
         setIsScrolled(true);
@@ -35,6 +48,7 @@ export default function Header() {
   const headerClassName = isScrolled ? 'header header--scrolled' : 'header';
 
   const handleThemeToggle = () => {
+    localStorage.setItem('theme', theme === 'dark' ? 'light' : 'dark');
     dispatch(toggleTheme());
   };
 
@@ -49,10 +63,17 @@ export default function Header() {
       <Navbar />
 
       <div className="header__right-container">
-        <MdOutlineLightMode
-          className="theme-icon"
-          onClick={handleThemeToggle}
-        />
+        {theme === 'dark' ? (
+          <MdOutlineDarkMode
+            className="theme-icon"
+            onClick={handleThemeToggle}
+          />
+        ) : (
+          <MdOutlineLightMode
+            className="theme-icon"
+            onClick={handleThemeToggle}
+          />
+        )}
 
         {isAuth ? (
           <div className="account-container">

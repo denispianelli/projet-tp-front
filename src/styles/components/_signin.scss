@@ -9,6 +9,7 @@
 		text-transform: uppercase;
 		text-align: left;
 		line-height: 1.5rem;
+		color: var(--text-color);
 
 		&--center {
 			text-align: center;
@@ -20,6 +21,8 @@
 		margin-bottom: 1rem;
 		margin-top: 1rem;
 		line-height: 1.2rem;
+		color: var(--text-color);
+		font-family: v.$font-family-base;
 
 		&--success {
 			display: flex;
@@ -42,6 +45,14 @@
 		font-family: inherit;
 	}
 
+	&__container {
+		resize: none;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
 	&-container--center {
 		display: flex;
 		flex-direction: column;
@@ -60,12 +71,21 @@
   background-color: var(--background-color-alt-modal);
   color: var(--text-color);
   font-size: v.$base-font-size;
+	font-family: v.$font-family-base;
 	outline: none;
 	border: 2px solid transparent;
 	// margin: 10px 0;
 
+	&--textarea {
+		min-height: 10rem;
+		max-height: 30rem;
+		min-width: 370px;
+		max-width: 370px;
+	}
+
 	&::placeholder {
-		font-size: 1rem;
+		font-size: 0.9rem;
+		color: #6F8186;
 	}
 
 	&[aria-invalid="true"] {
@@ -105,7 +125,7 @@
 
 	&--email {
 		visibility: visible;
-		left: 61px;
+		left: 65px;
 	}
 	
 	&--sigin-password {
@@ -115,22 +135,22 @@
 
 	&--password {
 		visibility: visible;
-		left: 115px;
+		left: 125px;
 	}
 
 	&--old-password{
 		visibility: visible;
-		left: 170px;
+		left: 185px;
 	}
 
 	&--new-password{
 		visibility: visible;
-		left: 185px;
+		left: 195px;
 	}
 
 	&--confirm-new-password{
 		visibility: visible;
-		left: 275px;
+		left: 305px;
 	}
 }
 

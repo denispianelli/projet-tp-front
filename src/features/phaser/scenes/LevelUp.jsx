@@ -71,11 +71,11 @@ export default class LevelUp extends Scene {
     const centreY = this.scale.height / 2;
     const modalHeight = 300;
     const titleYOffset = -120;
-    const titleFontSize = '90px';
+    const titleFontSize = '78px';
 
     const title = this.add
       .text(centreX, centreY - modalHeight / 2 + titleYOffset, 'LEVEL UP', {
-        fontFamily: 'VT323',
+        fontFamily: 'PressStart2P',
         fontSize: titleFontSize,
         color: '#FFFFFF',
       })
@@ -133,10 +133,10 @@ export default class LevelUp extends Scene {
       // Nom du bonus
       const text = this.add
         .text(cardX + cardWidth / 2, cardY + cardHeight / 2, displayName, {
-          fontFamily: 'VT323',
+          fontFamily: 'PressStart2P',
           fill: '#FFFFFF',
           align: 'center',
-          fontSize: '27px',
+          fontSize: '15px',
           stroke: 'black',
           strokeThickness: 1,
         })
@@ -150,10 +150,10 @@ export default class LevelUp extends Scene {
       // Niveau du bonus
       const levelText = this.add
         .text(cardX + cardWidth / 2, cardY + cardHeight - 30, `${level}/6`, {
-          fontFamily: 'VT323',
+          fontFamily: 'PressStart2P',
           fill: '#FFFFFF',
           align: 'center',
-          fontSize: '20px',
+          fontSize: '8px',
         })
         .setOrigin(0.5, 0.5)
         .setDepth(2);

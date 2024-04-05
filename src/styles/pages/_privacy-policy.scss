@@ -1,0 +1,29 @@
+@use '../utils/variables' as v;
+
+.privacy-policy {
+	text-align: center;
+	padding: 1rem;
+	color: var(--text-color);
+
+	&__title {
+		@extend .privacy-policy;
+		font-family: v.$heading-font-family;
+		text-transform: uppercase;
+		text-decoration-line: underline;
+		font-size: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	&__subtitle {
+		@extend .privacy-policy;
+		font-family: v.$font-family-base;
+		text-decoration-line: underline;
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
+
+	&__text {
+		@extend .privacy-policy;
+		font-family: v.$font-family-base;
+	}
+}

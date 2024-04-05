@@ -1,1 +1,0 @@
-digital art, pixel art, video game, fantasy, skeletons, desert landscape, background

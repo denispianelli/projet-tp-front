@@ -1,14 +1,14 @@
 @use '../utils/variables' as v;
 
 .dropdown__button {
-	font-family: inherit;
-	width: 100%;
-	color: inherit;
-	background: none;
-	border: none;
-	text-transform: uppercase;
-	cursor: pointer;
-	padding: 20px 19px;
+  font-family: inherit;
+  width: 100%;
+  color: inherit;
+  background: none;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 20px 19px;
 }
 
 .header__button {
@@ -19,7 +19,6 @@
   font-family: v.$heading-font-family;
   margin-top: 4rem;
   align-self: center;
-  width: 200px;
   background-color: #ffae00;
   border: 2px solid #000000;
   color: #ffffff;
@@ -41,10 +40,10 @@
 }
 
 .form__button {
-	position: absolute;
-	bottom: 2rem;
-	left: 50%;
-	transform: translateX(-50%);
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: v.$font-family-base;
   width: 70%;
   padding: 1rem 0;
@@ -53,7 +52,17 @@
   background-color: var(--background-color-alt-modal);
   color: var(--text-color-disabled-modal);
   font-weight: bold;
-	font-size: 1rem;
+  font-size: 1rem;
+
+  &--contact {
+		position: static;
+		transform: none;
+		width: 100%;
+
+		&:not(:disabled):hover {
+			transform: translateX(0) translateY(2px) !important; 
+		}
+	}
 }
 
 .form__button:not(:disabled) {
@@ -71,26 +80,26 @@
   }
 }
 
-@media screen and (min-width: v.$breakpoint-large){
-	.header__button {
-		font-family: v.$heading-font-family;
-		position: relative;
-		height: 100%;
-		width: 100%;
-		display: inline-block;
-		padding: 0;
-		font-size: 0.75rem;
-		text-align: center;
-		text-transform: uppercase;
-		color: inherit;
-		background: none;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-		transition: background-color 0.3s ease;
-	
-		&:focus {
-			outline: none;
-		}
-	}
+@media screen and (min-width: v.$breakpoint-large) {
+  .header__button {
+    font-family: v.$heading-font-family;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    padding: 0;
+    font-size: 0.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: inherit;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
