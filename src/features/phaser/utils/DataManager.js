@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /**
  * Gère les interactions avec les données du jeu, telles que les pièces, les
  * personnages débloqués, etc.
