@@ -1,13 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Header from '../layouts/Header';
 import Footer from '../layouts/Footer';
 import sendMailContact from '../store/middleware/contactMiddleware';
 
 export default function Contact() {
   const dispatch = useDispatch();
+
+  const { loading, error } = useSelector((state) => state.contact);
 
   const {
     register,
@@ -24,6 +26,54 @@ export default function Contact() {
   const onSubmit = (data) => {
     dispatch(sendMailContact(data));
   };
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <main className="main-contact">
+          <section className="section-contact">
+            <div className="form__container">
+              <h2 className="form__title form__title--center">Contacte-nous</h2>
+              <p className="form__text form__text--center">
+                Tu as une question, un commentaire ?
+                <br />
+                Envoie-nous un message !
+              </p>
+              <div className="loader">Chargement..</div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header />
+        <main className="main-contact">
+          <section className="section-contact">
+            <div className="form__container">
+              <h2 className="form__title form__title--center">Contacte-nous</h2>
+              <p className="form__text form__text--center">
+                Tu as une question, un commentaire ?
+                <br />
+                Envoie-nous un message !
+              </p>
+              <div className="error-container">
+                <p className="form__error">
+                  Une erreur s&apos;est produite, veuillez réessayer.
+                </p>
+              </div>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
