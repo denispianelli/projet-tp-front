@@ -32,7 +32,7 @@ export default function Characters() {
               <div key={character.id} className="character__card">
                 <img
                   className="character__img"
-                  src={`../../public/assets/gif/${character.name}.gif`}
+                  src={`/assets/gif/${character.name}.gif`}
                   alt={character.name}
                 />
                 <h3 className="character__subtitle">{character.name}</h3>

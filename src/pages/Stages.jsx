@@ -32,7 +32,7 @@ export default function Stages() {
               <div key={stage.id} className="character__card">
                 <img
                   className="character__img"
-                  src={`../../public/assets/ui/${stage.name}.png`}
+                  src={`/assets/ui/${stage.name}.png`}
                   alt={stage.name}
                 />
                 <h3 className="character__subtitle">{stage.name}</h3>

@@ -32,7 +32,7 @@ export default function Enemies() {
               <div key={enemy.id} className="enemy__card">
                 <img
                   className="enemy__img"
-                  src={`../../public/assets/gif/${enemy.name}.gif`}
+                  src={`/assets/gif/${enemy.name}.gif`}
                   alt={enemy.name}
                 />
                 <h3 className="enemy__subtitle">{enemy.name}</h3>
