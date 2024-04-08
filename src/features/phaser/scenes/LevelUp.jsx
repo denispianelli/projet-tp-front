@@ -136,7 +136,7 @@ export default class LevelUp extends Scene {
           fontFamily: 'PressStart2P',
           fill: '#FFFFFF',
           align: 'center',
-          fontSize: '15px',
+          fontSize: '11px',
           stroke: 'black',
           strokeThickness: 1,
         })
