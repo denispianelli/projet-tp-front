@@ -9,12 +9,13 @@ import sendMailContact from '../store/middleware/contactMiddleware';
 export default function Contact() {
   const dispatch = useDispatch();
 
-  const { loading, error } = useSelector((state) => state.contact);
+  const { loading, error, success } = useSelector((state) => state.contact);
 
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -25,55 +26,8 @@ export default function Contact() {
 
   const onSubmit = (data) => {
     dispatch(sendMailContact(data));
+    reset();
   };
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="main-contact">
-          <section className="section-contact">
-            <div className="form__container">
-              <h2 className="form__title form__title--center">Contacte-nous</h2>
-              <p className="form__text form__text--center">
-                Tu as une question, un commentaire ?
-                <br />
-                Envoie-nous un message !
-              </p>
-              <div className="loader">Chargement..</div>
-            </div>
-          </section>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
-  if (error) {
-    return (
-      <>
-        <Header />
-        <main className="main-contact">
-          <section className="section-contact">
-            <div className="form__container">
-              <h2 className="form__title form__title--center">Contacte-nous</h2>
-              <p className="form__text form__text--center">
-                Tu as une question, un commentaire ?
-                <br />
-                Envoie-nous un message !
-              </p>
-              <div className="error-container">
-                <p className="form__error">
-                  Une erreur s&apos;est produite, veuillez réessayer.
-                </p>
-              </div>
-            </div>
-          </section>
-        </main>
-        <Footer />
-      </>
-    );
-  }
 
   return (
     <>
@@ -87,6 +41,20 @@ export default function Contact() {
               <br />
               Envoie-nous un message !
             </p>
+            {success && (
+              <div className="success-container">
+                <p className="form__text">{success}</p>
+              </div>
+            )}
+            {loading && <div className="form__text">Chargement..</div>}
+            {error && (
+              <div className="error-container">
+                <p className="form__error">
+                  Une erreur s&apos;est produite, veuillez réessayer.
+                </p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="input-container">
                 <input

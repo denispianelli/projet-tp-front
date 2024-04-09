@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  contacts: [],
+  success: null,
   contact: null,
   loading: false,
   error: null,
@@ -18,7 +18,7 @@ const contactSlice = createSlice({
     }),
     success: (state, action) => ({
       ...state,
-      contacts: action.payload,
+      success: action.payload,
       loading: false,
       error: null,
     }),

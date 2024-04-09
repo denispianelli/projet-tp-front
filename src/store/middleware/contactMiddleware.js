@@ -16,7 +16,7 @@ const sendMailContact = (data) => async (dispatch) => {
     if (contactData.error) {
       dispatch(failure(contactData.error));
     } else {
-      dispatch(success());
+      dispatch(success(contactData));
     }
   } catch (error) {
     dispatch(failure(error.message));
